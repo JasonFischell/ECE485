@@ -196,7 +196,7 @@ if Chirp
 end
 
 if UseRecorded
-    [x,Fs] = audioread('eqt-chromo-sc.wav');
+    [x,Fs] = audioread('singing44.wav');
     Recording = 1;
 end
 
@@ -228,17 +228,7 @@ if ~AutoCorr
     [freqs, n0] = ac_pitch_lag(x,L,M,Fs,Fmin,Fmax,t,fig); 
 end
 freqsOrig = freqs;
-for i = 2:length(freqs)-1
-    if (freqs(i) >= 1.5*freqs(i-1)) &&  (freqs(i) >= 1.5*freqs(i+1))
-        freqs(i) = (freqs(i-1) + freqs(i+1))/2;
-    end
-    if (freqs(i) >= 1.5*freqs(i-1)) &&  ~(freqs(i) >= 1.5*freqs(i+1))
-        freqs(i) = freqs(i-1);
-    end
-    if ~(freqs(i) >= 1.5*freqs(i-1)) &&  (freqs(i) >= 1.5*freqs(i+1))
-        freqs(i) = freqs(i+1);
-    end
-end
+
 time = n0./Fs;
 figure(fig); clf; fig = fig+1;
 plot(n0./Fs,freqs,'k-',n0./Fs, freqsOrig, 'b-')
