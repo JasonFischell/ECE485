@@ -32,10 +32,10 @@ for k = 1:k_max
             % Halving
             if(corr(ceil(l/2) + index_z)>.7*corr(l + index_z) &&  ceil(l/2) > l_min)
                 max_amp = corr(ceil(l/2)+index_z);
-                max_freq = Fs/ceil(l/2);
+                max_freq = 2*Fs/ceil(l/2);
             else
                 max_amp = corr(l+index_z);
-                max_freq = Fs/l;
+                max_freq = 2*Fs/l;
             end
         end
     end
